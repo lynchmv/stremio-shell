@@ -11,7 +11,7 @@ QMAKE_TARGET_BUNDLE_PREFIX = com.smartcodeltd
 QMAKE_INFO_PLIST = Info.plist
 
 QT += qml quick network
-CONFIG += c++11
+CONFIG += c++17
 
 include(deps/singleapplication/singleapplication.pri)
 DEFINES += QAPPLICATION_CLASS=QApplication
@@ -29,7 +29,6 @@ mac {
 # however, we want to hardcode specific *.dylibs, because (1) includes are hardcoded, (2) installing mpv with brew is slow 
 unix:!mac {
     QMAKE_RPATHDIR += '$ORIGIN'
-    QT_CONFIG -= no-pkg-config
     CONFIG += link_pkgconfig
     LIBS += -L$$PWD/../mpv-build/mpv/build -lmpv
 }
@@ -63,7 +62,7 @@ win32 {
 QT += widgets
 
 # TODO: if def WEBENGINE
-QT += webengine webchannel dbus
+QT += webenginewidgets webchannel dbus
 WEBENGINE_CONFIG+=use_proprietary_codecs
 
 SOURCES += main.cpp \

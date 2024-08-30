@@ -1,5 +1,6 @@
 #include <QQmlApplicationEngine>
-#include <QtWebEngine>
+#include <QtWebEngineQuick>
+#include <QtWebEngineWidgets/QtWebEngineWidgets>
 #include <QSysInfo>
 
 #include <clocale>

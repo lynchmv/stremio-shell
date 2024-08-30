@@ -1,9 +1,9 @@
-import QtQuick 2.7
-import QtWebEngine 1.4
+import QtQuick 6.4
+import QtWebEngine 6.4
 import QtWebChannel 1.0
 import QtQuick.Window 2.2 // for Window instead of ApplicationWindow; also for Screen
-import QtQuick.Controls 1.4 // for ApplicationWindow
-import QtQuick.Dialogs 1.2
+import QtQuick.Controls 6.4 // for ApplicationWindow
+import QtQuick.Dialogs 6.4
 import com.stremio.process 1.0
 import com.stremio.screensaver 1.0
 import com.stremio.libmpv 1.0
@@ -19,8 +19,8 @@ ApplicationWindow {
     minimumWidth: 1000
     minimumHeight: 650
 
-    readonly property int initialWidth: Math.max(root.minimumWidth, Math.min(1600, Screen.desktopAvailableWidth * 0.8))
-    readonly property int initialHeight: Math.max(root.minimumHeight, Math.min(1000, Screen.desktopAvailableHeight * 0.8))
+    readonly property int initialWidth: Math.max(root.minimumWidth, Math.min(1600, Screen.availableGeometry.width * 0.8))
+    readonly property int initialHeight: Math.max(root.minimumHeight, Math.min(1000, Screen.availableGeometry.height * 0.8))
 
     width: root.initialWidth
     height: root.initialHeight
