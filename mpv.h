@@ -1,8 +1,13 @@
 #ifndef MPVRENDERER_H_
 #define MPVRENDERER_H_
+
 #define MPV_ENABLE_DEPRECATED 0
 
 #include <QtQuick/QQuickFramebufferObject>
+#include <QVariant>
+#include <QSet>
+#include <QQueue>
+#include <QPointer>
 
 #include <mpv/client.h>
 #include <mpv/render_gl.h>
@@ -22,19 +27,20 @@ class MpvObject : public QQuickFramebufferObject
 public:
     static void on_update(void *ctx);
 
-    MpvObject(QQuickItem * parent = 0);
-    virtual ~MpvObject();
-    virtual Renderer *createRenderer() const;
+    explicit MpvObject(QQuickItem *parent = nullptr);
+    ~MpvObject() override;
+
+    Renderer *createRenderer() const override;
 
 public slots:
-    void command(const QVariant& params);
-    void setProperty(const QString& name, const QVariant& value);
-    QVariant getProperty(const QString& name);
-    void observeProperty(const QString& name);
+    void command(const QVariant &params);
+    void setProperty(const QString &name, const QVariant &value);
+    QVariant getProperty(const QString &name);
+    void observeProperty(const QString &name);
 
 signals:
     void onUpdate();
-    void mpvEvent(const QString& ev, const QVariant& value);
+    void mpvEvent(const QString &event, const QVariant &value);
 
 private slots:
     void doUpdate();
@@ -44,7 +50,8 @@ private:
     static void wakeup(void *ctx);
     void handle_mpv_event(mpv_event *event);
     void initialize_mpv();
+
     QSet<QString> observed_properties;
 };
 
-#endif
+#endif // MPVRENDERER_H_

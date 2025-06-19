@@ -17,7 +17,6 @@
 #include <QQueue>
 #include <QVector>
 #include <QProcess>
-#include <QNetworkConfigurationManager>
 
 // Mixing C and C++ :(
 extern "C" {
@@ -84,7 +83,7 @@ class AutoUpdater : public QObject
     void downloadFinished();
     void downloadReadyRead();
 
-    void emitFatalError(QString, QVariant);
+    void emitFatalError(QString, QVariant err = QVariant());
 
     private:
     void enqueueDownload(QUrl, QByteArray);

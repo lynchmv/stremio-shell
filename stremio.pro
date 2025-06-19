@@ -10,7 +10,7 @@ QMAKE_TARGET_BUNDLE_PREFIX = com.smartcodeltd
 
 QMAKE_INFO_PLIST = Info.plist
 
-QT += qml quick network
+QT += qml quick opengl network
 CONFIG += c++17
 
 include(deps/singleapplication/singleapplication.pri)
@@ -62,7 +62,7 @@ win32 {
 QT += widgets
 
 # TODO: if def WEBENGINE
-QT += webenginewidgets webchannel dbus
+QT += webenginequick webenginewidgets webchannel dbus
 WEBENGINE_CONFIG+=use_proprietary_codecs
 
 SOURCES += main.cpp \

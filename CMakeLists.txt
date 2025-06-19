@@ -56,7 +56,7 @@ add_subdirectory(deps/singleapplication)
 
 set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
 
-find_package(Qt${QT_DEFAULT_MAJOR_VERSION} REQUIRED COMPONENTS Widgets Network Qml Quick WebEngineWidgets WebChannel DBus OpenGLWidgets)
+find_package(Qt${QT_DEFAULT_MAJOR_VERSION} REQUIRED COMPONENTS Widgets Network Qml Quick OpenGL WebEngineQuick WebEngineWidgets WebChannel DBus OpenGLWidgets)
 find_package(OpenSSL REQUIRED)
 find_package(MPV REQUIRED)
 
@@ -113,9 +113,11 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC
   Qt6::Qml
   Qt6::Quick
+  Qt6::OpenGL
   Qt6::Network
   Qt6::Widgets
   Qt6::WebEngineWidgets
+  Qt6::WebEngineQuick
   Qt6::WebChannel
   Qt6::DBus
   Qt6::OpenGLWidgets
